@@ -1,0 +1,19 @@
+***********
+
+DESCRIPTION
+	What did you do? Why did you do it?
+
+STEPS TO TEST
+	1. Clone this branch to a local repo
+	2. In terminal, run `dotnet build` then `dotnet run`
+	3. Test functionality
+		A. Method Foo returns var Bar
+		B. Etc.
+		C. Etc.
+
+REFERENCE
+	Ticket - https://**
+	Other - ERD? MDSN doc? 
+	
+***********
+	
