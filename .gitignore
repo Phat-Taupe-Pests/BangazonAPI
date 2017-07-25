@@ -1,4 +1,6 @@
 bangazonapi.db
+bin/
+obj/
 
 # User-specific files
 *.suo
