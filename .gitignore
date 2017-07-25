@@ -6,7 +6,7 @@
 *.user
 *.sln.docstates
 
-*.db
+bangazonapi.db
 
 # Build results
 
