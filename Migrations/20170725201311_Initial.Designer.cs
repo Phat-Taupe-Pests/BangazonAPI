@@ -8,8 +8,8 @@ using BangazonAPI.Data;
 namespace BangazonAPI.Migrations
 {
     [DbContext(typeof(BangazonAPIContext))]
-    [Migration("20170725170716_CustomerModelAdded")]
-    partial class CustomerModelAdded
+    [Migration("20170725201311_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,30 @@ namespace BangazonAPI.Migrations
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("BangazonAPI.Models.Employee", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateStarted")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("strftime('%Y-%m-%d')");
+
+                    b.Property<int>("DepartmentID");
+
+                    b.Property<int>("IsSupervisor");
+
+                    b.Property<string>("JobTitle")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("EmployeeID");
+
+                    b.ToTable("Employee");
                 });
         }
     }

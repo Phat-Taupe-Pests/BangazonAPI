@@ -6,7 +6,11 @@
 *.user
 *.sln.docstates
 
-*.db
+bangazonapi.db
+obj/
+bin/
+.vscode/
+
 
 # Build results
 

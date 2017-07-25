@@ -38,6 +38,30 @@ namespace BangazonAPI.Migrations
 
                     b.ToTable("Customer");
                 });
+
+            modelBuilder.Entity("BangazonAPI.Models.Employee", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateStarted")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("strftime('%Y-%m-%d')");
+
+                    b.Property<int>("DepartmentID");
+
+                    b.Property<int>("IsSupervisor");
+
+                    b.Property<string>("JobTitle")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("EmployeeID");
+
+                    b.ToTable("Employee");
+                });
         }
     }
 }
