@@ -8,9 +8,10 @@ using BangazonAPI.Data;
 namespace BangazonAPI.Migrations
 {
     [DbContext(typeof(BangazonAPIContext))]
-    partial class BangazonAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20170725193135_AddedPaymentTypesModel")]
+    partial class AddedPaymentTypesModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");

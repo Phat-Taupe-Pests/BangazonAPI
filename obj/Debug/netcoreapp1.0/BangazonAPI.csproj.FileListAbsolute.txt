@@ -6,3 +6,11 @@
 /Users/theartstudio/workspace/csharp/phat-taupe-pests/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.pdb
 /Users/theartstudio/workspace/csharp/phat-taupe-pests/BangazonAPI/obj/Debug/netcoreapp1.0/BangazonAPI.dll
 /Users/theartstudio/workspace/csharp/phat-taupe-pests/BangazonAPI/obj/Debug/netcoreapp1.0/BangazonAPI.pdb
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.deps.json
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.runtimeconfig.json
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.runtimeconfig.dev.json
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.dll
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/bin/Debug/netcoreapp1.0/BangazonAPI.pdb
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/obj/Debug/netcoreapp1.0/BangazonAPI.AssemblyInfo.cs
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/obj/Debug/netcoreapp1.0/BangazonAPI.dll
+/Users/bsg/workspace/csharp/bangazon/BangazonAPI/obj/Debug/netcoreapp1.0/BangazonAPI.pdb

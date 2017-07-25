@@ -28,7 +28,7 @@ namespace BangazonAPI.Models
         }
 
         // ICollection<Product> Products;
-        // ICollection<PaymentType> PaymentTypes;
+        ICollection<PaymentType> PaymentTypes;
         // ICollection<Order> Orders;
 
 

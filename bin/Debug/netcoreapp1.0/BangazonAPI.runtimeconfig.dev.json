@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/theartstudio/.nuget/packages"
+      "/Users/bsg/.nuget/packages"
     ]
   }
 }
