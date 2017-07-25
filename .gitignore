@@ -7,6 +7,9 @@
 *.sln.docstates
 
 bangazonapi.db
+obj/
+bin/
+.vscode/
 
 # Build results
 
