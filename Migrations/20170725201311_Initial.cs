@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BangazonAPI.Migrations
 {
-    public partial class CustomerModelAdded : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,12 +24,32 @@ namespace BangazonAPI.Migrations
                 {
                     table.PrimaryKey("PK_Customer", x => x.CustomerID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Employee",
+                columns: table => new
+                {
+                    EmployeeID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DateStarted = table.Column<DateTime>(nullable: false, defaultValueSql: "strftime('%Y-%m-%d')"),
+                    DepartmentID = table.Column<int>(nullable: false),
+                    IsSupervisor = table.Column<int>(nullable: false),
+                    JobTitle = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employee", x => x.EmployeeID);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "Employee");
         }
     }
 }
