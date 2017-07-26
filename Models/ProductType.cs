@@ -16,7 +16,7 @@ namespace BangazonAPI.Models
         [Required]
         public string Name {get; set;}
 
-        // ICollection<Product> Products;
+        ICollection<Product> Products;
 
     }
 }
