@@ -34,9 +34,10 @@ namespace BangazonAPI.Models
         }
 
         // ICollection<Product> Products;
-        // ICollection<PaymentType> PaymentTypes;
         // Setting the Foreign Key relationship with Orders --Eliza
         ICollection<Order> Orders;
+        ICollection<PaymentType> PaymentTypes;
+
 
     }
 }
