@@ -19,5 +19,7 @@ namespace BangazonAPI.Models
         [Required]
         public int CustomerID { get; set; }
         public Customer Customer { get; set; }
+        // Setting foreign Key relationship with orders --Eliza
+        ICollection<Order> Orders;
     }
 }
