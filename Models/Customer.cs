@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+
+//Written By: Pair Programmed as a Team. 
 namespace BangazonAPI.Models
 {
+    //Creates a new Customer class
+    //CustomerID is the Primary Key
+
     public class Customer
     {
         [Key]
@@ -22,15 +27,16 @@ namespace BangazonAPI.Models
         [Required]
         public int IsActive {get; set;}
 
+        //To change the default for InActive to 1, need to set it in a Constructor
         public Customer()
         {
             IsActive = 1;
         }
 
         // ICollection<Product> Products;
-        // ICollection<PaymentType> PaymentTypes;
         // Setting the Foreign Key relationship with Orders --Eliza
         ICollection<Order> Orders;
+        ICollection<PaymentType> PaymentTypes;
 
     }
 }
