@@ -18,9 +18,9 @@ namespace BangazonAPI.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
-        // public DbSet<Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
         // public DbSet<TrainingProgram> TrainingProgram { get; set; }
-        // public DbSet<Computer> Computer { get; set; }
+        public DbSet<Computer> Computer { get; set; }
 
 
         //Sets the DateCreated on the <Customer> to todays date every time a new instance of Customer is added to the Context. 
