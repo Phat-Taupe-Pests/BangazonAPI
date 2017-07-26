@@ -163,5 +163,35 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
+        //Get All Inactive Customers
+        [HttpGet("?active={status}")]
+        public IActionResult Get(string status)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                //will search the _context.Customer for an entry that has the id we are looking for
+                //if found, will return that customer
+                //if not found will return 404. 
+                Customer customer = _context.Customer.Single(m => m.CustomerID == id);
+
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                
+                return Ok(customer);
+            }
+            //if the try statement fails for some reason, will return error of what happened. 
+            catch (System.InvalidOperationException ex)
+            {
+                return NotFound(ex);
+            }
+        }
+
     }
 }
