@@ -38,6 +38,5 @@ namespace BangazonAPI.Models
         ICollection<Order> Orders;
         ICollection<PaymentType> PaymentTypes;
 
-
     }
 }

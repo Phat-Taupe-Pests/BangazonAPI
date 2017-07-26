@@ -20,7 +20,7 @@ namespace BangazonAPI.Data
         public DbSet<PaymentType> PaymentType { get; set; }
         public DbSet<Department> Department { get; set; }
         // public DbSet<TrainingProgram> TrainingProgram { get; set; }
-        // public DbSet<Computer> Computer { get; set; }
+        public DbSet<Computer> Computer { get; set; }
 
 
         //Sets the DateCreated on the <Customer> to todays date every time a new instance of Customer is added to the Context. 
@@ -30,12 +30,9 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Customer>()
                 .Property(b => b.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-
             modelBuilder.Entity<Employee>()
                 .Property(c => c.DateStarted)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-
-
             // Sets the DateCreated for the Order. -- Eliza
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
