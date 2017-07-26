@@ -20,5 +20,7 @@ namespace BangazonAPI.Models
         public int PaymentTypeID {get; set;}
         public PaymentType PaymentType {get; set;}
 
+        ICollection<ProductOrder> ProductOrders;
+
     }
 }
