@@ -8,9 +8,10 @@ using BangazonAPI.Data;
 namespace BangazonAPI.Migrations
 {
     [DbContext(typeof(BangazonAPIContext))]
-    partial class BangazonAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20170725191606_AddedProductTypeModelAndProductTypeController")]
+    partial class AddedProductTypeModelAndProductTypeController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -39,31 +40,17 @@ namespace BangazonAPI.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("BangazonAPI.Models.PaymentType", b =>
+            modelBuilder.Entity("BangazonAPI.Models.ProductType", b =>
                 {
-                    b.Property<int>("PaymentTypeID")
+                    b.Property<int>("ProductTypeID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccountNumber");
-
-                    b.Property<int>("CustomerID");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("PaymentTypeID");
+                    b.HasKey("ProductTypeID");
 
-                    b.HasIndex("CustomerID");
-
-                    b.ToTable("PaymentType");
-                });
-
-            modelBuilder.Entity("BangazonAPI.Models.PaymentType", b =>
-                {
-                    b.HasOne("BangazonAPI.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.ToTable("ProductType");
                 });
         }
     }

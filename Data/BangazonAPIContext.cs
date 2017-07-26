@@ -16,7 +16,7 @@ namespace BangazonAPI.Data
         // public DbSet<Order> Order { get; set; }
         // public DbSet<Product> Product { get; set; }
         // public DbSet<ProductType> ProductType { get; set; }
-        // public DbSet<PaymentType> PaymentType { get; set; }
+        public DbSet<PaymentType> PaymentType { get; set; }
         // public DbSet<Employee> Employee { get; set; }
         // public DbSet<Department> Department { get; set; }
         // public DbSet<TrainingProgram> TrainingProgram { get; set; }
