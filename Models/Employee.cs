@@ -27,7 +27,7 @@ namespace BangazonAPI.Models
 
         public int DepartmentID {get; set;}
 
-        // public Department Department {get; set;}
+        public Department Department {get; set;}
 
         public Employee()
         {
