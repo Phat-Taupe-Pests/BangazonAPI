@@ -19,7 +19,7 @@ namespace BangazonAPI.Data
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
         // public DbSet<Department> Department { get; set; }
-        // public DbSet<TrainingProgram> TrainingProgram { get; set; }
+        public DbSet<TrainingProgram> TrainingProgram { get; set; }
         // public DbSet<Computer> Computer { get; set; }
 
 
@@ -34,8 +34,6 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Employee>()
                 .Property(c => c.DateStarted)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-
-
             // Sets the DateCreated for the Order. -- Eliza
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
