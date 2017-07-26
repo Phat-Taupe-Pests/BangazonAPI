@@ -63,6 +63,7 @@ namespace BangazonAPI.Controllers
         }
 
         // POST url/TrainingProgram
+        //{"DateStarted": "08-01-2017", "DateEnded": "08-04-2017", "MaxAttendees": 10}
         // Posts a new trainingprogram -- Eliza
         [HttpPost]
         public IActionResult Post([FromBody] TrainingProgram newTrainingProgram)
