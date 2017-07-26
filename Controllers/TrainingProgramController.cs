@@ -149,11 +149,21 @@ namespace BangazonAPI.Controllers
             {
                 return NotFound();
             }
+            
+            DateTime thisDay = DateTime.Today;
 
-            _context.TrainingProgram.Remove(singleTrainingProgram);
-            _context.SaveChanges();
+            var compare = DateTime.Compare(thisDay, singleTrainingProgram.DateStarted);
 
-            return Ok(singleTrainingProgram);
+            if (compare < 0)
+            {
+                _context.TrainingProgram.Remove(singleTrainingProgram);
+                _context.SaveChanges();
+
+                return Ok(singleTrainingProgram);
+            } else {
+                return BadRequest();
+            }
+
         }
 
     }
