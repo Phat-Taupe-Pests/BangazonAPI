@@ -8,19 +8,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+//Written by: Eliza Meeks
 namespace BangazonAPI.Controllers
 {
+     //Sets URL route to <websitename>/TrainingProgram
+    //Creates a new Customer controller class that inherits methods from AspNetCore Controller class
     [Route("[controller]")]
     public class TrainingProgramController : Controller
     {
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
+        //Contructor that instantiates a new Customer controller and sets _context equal to a new instance of our BangazonAPIContext class
         public TrainingProgramController(BangazonAPIContext ctx)
         {
             _context = ctx;
         }
 
-        // GET url/TrainingProgram
-        // Gets a list of all training programs -- Eliza
+        // GET {url}/TrainingProgram will return a list of all training programs
         [HttpGet]
         public IActionResult Get()
         {
@@ -35,8 +39,7 @@ namespace BangazonAPI.Controllers
 
         }
 
-        // GET url/TrainingProgram/{id}
-        // Gets one training program based on an id -- Eliza
+        // GET {url}/TrainingProgram/{id} will get on trianing program based on the ID argument input.
         [HttpGet("{id}", Name = "GetSingleTrainingProgram")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -62,9 +65,8 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST url/TrainingProgram
-        //{"DateStarted": "08-01-2017", "DateEnded": "08-04-2017", "MaxAttendees": 10}
-        // Posts a new trainingprogram -- Eliza
+        // POST {url}/TrainingProgram to post a new training program. Use the following format to POST the object.
+        //{"DateStart": "08-01-2017", "DateEnd": "08-04-2017", "MaxAttendees": 10}
         [HttpPost]
         public IActionResult Post([FromBody] TrainingProgram newTrainingProgram)
         {
@@ -81,7 +83,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CustomerExists(newTrainingProgram.TrainingProgramID))
+                if (TrainingProgramExists(newTrainingProgram.TrainingProgramID))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -93,14 +95,14 @@ namespace BangazonAPI.Controllers
 
             return CreatedAtRoute("GetSingleCustomer", new { id = newTrainingProgram.TrainingProgramID }, newTrainingProgram);
         }
-
-        private bool CustomerExists(int trainingProgramID)
+        // Checks to see if the trianing program exists before posting a new one.
+        private bool TrainingProgramExists(int trainingProgramID)
         {
           return _context.TrainingProgram.Count(e => e.TrainingProgramID == trainingProgramID) > 0;
         }
 
-        // PUT url/TrainingProgram/5
-        // Edits something in the database; you must send the ENTIRE object up. -- Eliza
+        // PUT {url}/TrainingProgram/5 edits your database.
+        // Use this format to PUT. {"DateStart": "08-01-2017", "DateEnd": "08-04-2017", "MaxAttendees": 10}
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] TrainingProgram modifiedTrainingProgram)
         {
@@ -122,7 +124,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!TrainingProgramExists(id))
                 {
                     return NotFound();
                 }
@@ -135,8 +137,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE url/TrainingProgram/5
-        // Deletes something based on an id. -- Eliza
+        // DELETE {url}/TrainingProgram/5 Deletes something based on an id as long as the start date is in the future.
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -150,11 +151,11 @@ namespace BangazonAPI.Controllers
             {
                 return NotFound();
             }
-            
+            // Creates a DateTime variable for today.
             DateTime thisDay = DateTime.Today;
-
-            var compare = DateTime.Compare(thisDay, singleTrainingProgram.DateStarted);
-
+            // Compares today with the date the training program starts.
+            var compare = DateTime.Compare(thisDay, singleTrainingProgram.DateStart);
+            // Only deletes the program if it hasn't started yet, else it returns a bad request.
             if (compare < 0)
             {
                 _context.TrainingProgram.Remove(singleTrainingProgram);
