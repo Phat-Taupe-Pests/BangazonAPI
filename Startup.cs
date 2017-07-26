@@ -43,6 +43,7 @@ namespace BangazonAPI
             services.AddMvc();
 
 
+            //Sets evnironment variable to BANGAZON_DB  
             string path = System.Environment.GetEnvironmentVariable("BANGAZON_DB");
             var connection = $"Filename={path}";
             Console.WriteLine($"connection = {connection}");
