@@ -78,7 +78,7 @@ namespace BangazonAPI.Controllers
         }
 
         // POST
-        // //http://localhost:5000/Employee/ will post new Employee to the DB 
+        // http://localhost:5000/Employee/ will post new Employee to the DB
         [HttpPost] 
         public IActionResult Post([FromBody] Employee newEmployee)
         {
@@ -119,7 +119,7 @@ namespace BangazonAPI.Controllers
         }
 
         // PUT 
-         //http://localhost:5000/Employee/{id} will edit a employee entry in the DB.  
+         //http://localhost:5000/Employee/{id} will edit a employee entry in the DB.
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Employee modifiedEmployee)
         {

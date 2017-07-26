@@ -66,6 +66,10 @@ namespace BangazonAPI.Controllers
 
         // POST url/ProductType
         // Creates a ProductType in the database
+        // Requires an Object:
+        // {
+        //     "Name": "Example"
+        // }
 
         [HttpPost]
         public IActionResult Post([FromBody] ProductType newProductType)
@@ -101,7 +105,13 @@ namespace BangazonAPI.Controllers
           return _context.ProductType.Count(e => e.ProductTypeID == productTypeID) > 0;
         }
         // PUT url/ProductType/{id}
-        // Edits a Specific ProductType from the database
+        // Edits a Specific ProductType from the database correlating to the id
+        // Requires an Object
+        // {
+        //     "ProductTypeID": 1,
+        //     "Name": "Example"
+
+        // }
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] ProductType modifiedProductType)
         {

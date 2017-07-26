@@ -81,7 +81,8 @@ namespace BangazonAPI.Controllers
         }
 
         // POST
-        // //http://localhost:5000/Department/ will post new Department to the DB 
+        // //http://localhost:5000/Department/ will post new Department to the DB
+        // Requires an Object: {"Name": "theName", "DepartmentBudget": ex. 99999}
         [HttpPost]
         //takes the format of Department type as a JSON format and adds to database. 
         public IActionResult Post([FromBody] Department newDepartment)
@@ -129,6 +130,12 @@ namespace BangazonAPI.Controllers
 
         // PUT 
          //http://localhost:5000/Department/{id} will edit a Department entry in the DB.  
+        // Requires an Object: 
+        // {
+        //     "departmentID": 1,
+        //     "name": "theName",
+        //     "expenseBudget": 99999
+        // }
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Department modifiedDepartment)
         {
