@@ -17,8 +17,8 @@ namespace BangazonAPI.Models
         public int CustomerID {get; set;}
         // Setting foreign key relationship with Customer --Eliza
         public Customer Customer {get; set;}
-        // public int PaymentTypeID {get; set;}
-        // public PaymentType PaymentType {get; set;}
+        public int PaymentTypeID {get; set;}
+        public PaymentType PaymentType {get; set;}
 
     }
 }
