@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 
-//Written By: Pair Programmed as a Team. 
+//Written By: MEA 
 namespace BangazonAPI.Models
 {
     //Creates a new Computer class
