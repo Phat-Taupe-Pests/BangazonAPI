@@ -5,7 +5,7 @@ This is an API for Bangazon INC. This API will allow user to GET/POST/PUT and (s
 ## Installing
 
 As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running. 
- 1. Fork and clone the repo on to you local machine. 
+ 1.     Fork and clone the repo on to you local machine. 
  2. Run `dotnet ef migrations add bangazonapi` 
  >This will create all the migrations needed for Entity Framework to post items to the database based on the models in the Models/ directory
  3. Run `dotnet ef database update` 
@@ -73,7 +73,7 @@ For now, all calls to the API will be made from `http:localhost:5000` as the dom
 * You can get the information on a single employee by runnning a Get call to `http://localhost:5000/employee/{employeeID}`
 >Note you need to have a employee unique ID number to get the correct information
 
-* You can update the info on a specific employee by running a Put call to `http://localhost:5000/employee/{employeeID}``
+* You can update the info on a specific employee by running a Put call to `http://localhost:5000/employee/{employeeID}`
 
 
 
