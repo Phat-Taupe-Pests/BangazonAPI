@@ -10,6 +10,7 @@ namespace BangazonAPI.Models
     public class ProductOrder
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductOrderID {get; set;}
         [Required]
         public int ProductID {get; set;}

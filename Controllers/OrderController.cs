@@ -85,18 +85,12 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CustomerExists(newProductOrder.OrderID))
-                {
-                    return new StatusCodeResult(StatusCodes.Status409Conflict);
-                }
-                else
-                {
-                    throw;
-                }
+                Console.WriteLine("sorry bubs");
             }
 
             return Ok();
         }
+        
         // POST url/Order
         // Posts a new order -- Eliza
         [HttpPost]
