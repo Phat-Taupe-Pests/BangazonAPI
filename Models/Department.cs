@@ -21,7 +21,7 @@ namespace BangazonAPI.Models
         public double ExpenseBudget {get; set;}
 
         //Foreign Key Relationship with Employees 
-        //ICollection<Employee> Employees;
+        ICollection<Employee> Employees;
         
     }
 }

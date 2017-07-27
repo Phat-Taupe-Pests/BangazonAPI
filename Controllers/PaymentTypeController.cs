@@ -22,7 +22,9 @@ namespace BangazonAPI.Controllers
         }
 
         // Get All payment type
-        // ex. paymenttype/
+        // ex. url/paymenttype
+        // returns all payment types if any exist
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -66,6 +68,13 @@ namespace BangazonAPI.Controllers
 
         // Post a new payment type
         // ex. /paymenttype
+        // Requires an Object:
+        // {
+        //     "Name": "Example",
+        //     "AccountNumber": ex. 1123,
+        //     "CustomerID": ex. 1
+        // }
+
         [HttpPost]
         public IActionResult Post([FromBody] PaymentType newPaymentType)
         {
@@ -102,6 +111,13 @@ namespace BangazonAPI.Controllers
 
         // Edit a payment type
         // ex. /paymenttype/4
+        // Requires an Object:
+        // {
+        //     "PaymentTypeID": ex. 1,
+        //     "AccountNumber": ex. 2,
+        //     "CustomerID": ex. 3,
+        //     "Name": "Example"
+        // }
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] PaymentType modifiedPaymentType)
         {

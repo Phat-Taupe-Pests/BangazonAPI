@@ -19,7 +19,6 @@ namespace BangazonAPI.Models
 
         [Required]
         public double Price {get; set;}
-
         public int ProductTypeID {get; set;}
         public ProductType ProductType {get; set;}
 
@@ -27,6 +26,7 @@ namespace BangazonAPI.Models
         public Customer Customer {get; set;}
 
         public virtual ICollection<ProductOrder> ProductOrders {get; set;}
+
     }
 
 }

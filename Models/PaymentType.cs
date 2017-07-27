@@ -5,8 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BangazonAPI.Models
 {
+    // Created by Ben
     public class PaymentType
     {
+    //Creates a new PaymentType class
+    //PaymentTypeID is the Primary Key
         [Key]
         public int PaymentTypeID { get; set; }
 
@@ -19,7 +22,7 @@ namespace BangazonAPI.Models
         [Required]
         public int CustomerID { get; set; }
         public Customer Customer { get; set; }
-        // Setting foreign Key relationship with orders --Eliza
+
         ICollection<Order> Orders;
     }
 }

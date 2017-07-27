@@ -20,14 +20,14 @@ namespace BangazonAPI.Models
         [Required]
         public string JobTitle {get; set;}
         [Required]
-        public DateTime DateStarted {get; set;}
+        public DateTime? DateStarted {get; set;}
 
         [Required]
         public int IsSupervisor {get; set;}
 
         public int DepartmentID {get; set;}
 
-        // public Department Department {get; set;}
+        public Department Department {get; set;}
 
         public Employee()
         {

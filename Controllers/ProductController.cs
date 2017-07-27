@@ -12,18 +12,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BangazonAPI.Controllers
 {
+//Sets URL route to <websitename>/Products
     [Route("[controller]")]
+
+//Creates a new Product controller class that inherits methods from AspNetCore Controller class   
     public class ProductController: Controller
     {
+//Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
-
+//Contructor that instantiates a new Product controller and sets _context equal to a new instance of our BangazonAPIContext class
         public ProductController(BangazonAPIContext ctx)
         {
             _context = ctx;
         }
 
-//Get all Products from the DB
+//GET all method
+//http://localhost:5000/product/ will return a list of all products. 
         [HttpGet]
+//Get() is a method from the AspNetCore Controller class to retreive info from database. 
         public IActionResult Get()
         {
             IQueryable<Product> products = from product in _context.Product select product;
@@ -35,7 +41,9 @@ namespace BangazonAPI.Controllers
 
             return Ok(products);
         }
-//Get Single Product from the DB
+//Get Single Product from the DB method
+//http://localhost:5000/product/id - id is an integer that represents the unique id for each product in the product datatable
+//Examples {url}/product/1 or {url}/product/42
         [HttpGet("{id}", Name = "GetSingleProduct")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -60,7 +68,10 @@ namespace BangazonAPI.Controllers
                 return NotFound(ex);
             }
         }
-//Posting a new product to the DB
+//Post a new product tot the database's product table
+//Requires a stringified json object to be passed thro the http request that contains all the properties of the Product class
+//Property(type): Price(double) Title(string) Description(string) ProductType(int - foriegn key of ProductType) CustomerID(int- foriegn key from Customer)
+//Note: CustomerID is for the customer that created the Product
         [HttpPost]
         public IActionResult Post([FromBody] Product newProduct)
         {
@@ -91,7 +102,12 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("GetSingleProduct", new { id = newProduct.ProductID }, newProduct);
         }
 
-//Editting an already Existing Product in the DB
+//Put Method
+//Edits a preexisting Product in the database
+//Requires a compete Product class to be passed as a stringified JSON object 
+//Property(type): Price(double) Title(string) Description(string) ProductType(int - foriegn key of ProductType) CustomerID(int- foriegn key from Customer)
+//Note: CustomerID is for the customer that created the Product
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Product modifiedProduct)
         {
@@ -128,13 +144,18 @@ namespace BangazonAPI.Controllers
 
 
 //Helper Function to check for existence of a Product
+//Used by other methods in the class
         private bool ProductExists(int productID)
         {
           return _context.Product.Count(e => e.ProductID == productID) > 0;
         }
 
 
-//Delete a Product Listing from the DB
+//Delete a Product method
+//Requires the unique ID of the product you want to delete appended to the end of the url in the http request
+//http://localhost:5000/product/id - id is an integer that represents the unique id for each product in the product datatable
+//Examples {url}/product/1 or {url}/product/42
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

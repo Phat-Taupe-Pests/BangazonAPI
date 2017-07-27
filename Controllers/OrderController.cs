@@ -110,6 +110,14 @@ namespace BangazonAPI.Controllers
 
         // PUT url/Order/5
         // Edits something in the database; you must send the ENTIRE object up. -- Eliza
+        // Requires an Object:
+        // {
+        //     "OrderID": 1,
+        //     "CustomerId": 1,
+        //     "DateCreated": "0001-01-01T00:00:00",
+        //     "PaymentTypeID": 1
+        // }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Order modifiedOrder)
         {

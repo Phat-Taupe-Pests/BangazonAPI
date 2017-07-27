@@ -20,10 +20,9 @@ namespace BangazonAPI.Models
         [Required]
         public string LastName {get; set;}
         [Required]
-        public DateTime DateCreated {get; set;}
+        public DateTime? DateCreated {get; set;}
         [Required]
-        public DateTime DateLastInteraction {get; set;}
-
+        public DateTime? DateLastInteraction {get; set;}
         [Required]
         public int IsActive {get; set;}
 
