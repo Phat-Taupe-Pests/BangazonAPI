@@ -37,7 +37,7 @@ namespace BangazonAPI.Controllers
         }
 
         // GET url/Computer/{id}
-        // Returns a Specific Computer correlating to id
+        // Returns a Specific Computer correlating to ID defined in the URL
 
         [HttpGet("{id}", Name = "GetSingleComputer")]
         public IActionResult Get([FromRoute] int id)
@@ -66,6 +66,7 @@ namespace BangazonAPI.Controllers
 
         // POST url/Computer
         // Creates a Computer in the database
+        // Requires an Object: {"DatePurchased": "mm-dd-yyyy"}
 
         [HttpPost]
         public IActionResult Post([FromBody] Computer newComputer)
@@ -100,8 +101,16 @@ namespace BangazonAPI.Controllers
         {
           return _context.Computer.Count(e => e.ComputerID == computerID) > 0;
         }
+
         // PUT url/Computer/{id}
         // Edits a Specific Computer from the database
+        // Requires an Object: 
+        // {
+        //     "computerID": 1,
+        //     "datePurchased": "1988-01-18T00:00:00",
+        //     "dateDecomissioned": "0001-01-01T00:00:00"
+        // }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Computer modifiedComputer)
         {
@@ -136,7 +145,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
         // DELETE url/Computer/{id}
-        // Removes a specific Computer from the database
+        // Removes a specific Computer from the database correlated to the id in the url
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

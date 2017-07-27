@@ -9,7 +9,6 @@ namespace BangazonAPI.Models
 {
     //Creates a new Computer class
     //ComputerID is the Primary Key
-
     public class Computer
     {
         [Key]
