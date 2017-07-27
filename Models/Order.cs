@@ -22,7 +22,7 @@ namespace BangazonAPI.Models
 
         // ICollection<ProductOrder> ProductOrders;
 
-        public ICollection<ProductOrder> ProductOrders {get; set;}
+        public virtual ICollection<ProductOrder> ProductOrders {get; set;}
 
     }
 }

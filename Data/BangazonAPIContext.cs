@@ -40,14 +40,14 @@ namespace BangazonAPI.Data
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
             modelBuilder.Entity<ProductOrder>()
                 .HasKey(po => new {po.ProductID, po.OrderID});
-            modelBuilder.Entity<ProductOrder>()
-                .HasOne(po => po.Order)
-                .WithMany(p => p.ProductOrders)
-                .HasForeignKey(po => po.OrderID);
-            modelBuilder.Entity<ProductOrder>()
-                .HasOne(po => po.Product)
-                .WithMany(o => o.ProductOrders)
-                .HasForeignKey(po => po.ProductID);
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasOne(po => po.Order)
+            //     .WithMany(p => p.ProductOrders)
+            //     .HasForeignKey(po => po.OrderID);
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasOne(po => po.Product)
+            //     .WithMany(o => o.ProductOrders)
+            //     .HasForeignKey(po => po.ProductID);
                 
         }
 

@@ -24,7 +24,7 @@ namespace BangazonAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IQueryable<object> orders = from order in _context.Order select order;
+            IQueryable<object> orders = _context.Order.Include("ProductOrders.Product");
 
             if (orders == null)
             {
@@ -47,9 +47,14 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                // IQueryable<Product> products = _context.ProductOrder.Select(o => o.Product);
+                // IQueryable<Product> products = _context.ProductOrder.Where(o => o.OrderID == id).Select(o => o.Product);
                 // IQueryable<object> ProductInOrder = _context.ProductOrder.Select(c => c.Product).Where(o => o.OrderID = o.OrderId);
-                Order order = _context.Order.Include(o => o.ProductOrders).Single(m => m.OrderID == id);
+                // ICollection<Product> productsList = new List<Product>();
+                Order order = _context.Order.Include("Products").Single(m => m.OrderID == id);
+                // foreach (var thing in products)
+                // {
+                //     order.Products.Add(thing);
+                // }
 
 
                 if (order == null)
@@ -64,7 +69,34 @@ namespace BangazonAPI.Controllers
                 return NotFound(ex);
             }
         }
+        [HttpPost("addproduct")]
+        public IActionResult Post([FromBody] ProductOrder newProductOrder)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _context.ProductOrder.Add(newProductOrder);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (CustomerExists(newProductOrder.OrderID))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
         // POST url/Order
         // Posts a new order -- Eliza
         [HttpPost]
