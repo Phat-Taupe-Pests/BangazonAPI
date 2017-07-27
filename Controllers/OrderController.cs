@@ -36,7 +36,8 @@ namespace BangazonAPI.Controllers
         }
 
         // GET url/Order/{id}
-        // Gets one order based on an id -- Eliza
+        // Gets one order based on an id -- Ben
+        // Formats it for the purposes of clean JSON
         [HttpGet("{id}", Name = "GetSingleOrder")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -47,16 +48,45 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                // ICollection<Product> productsList = new List<Product>();
-                // Order order = _context.Order.Include("Products").Single(m => m.OrderID == id);
                 Order order = _context.Order.Include("ProductOrders.Product").Single(m => m.OrderID == id);
+                List <Product> theseProducts = new List <Product>();
 
+                foreach (ProductOrder productOrder in order.ProductOrders)
+                {
+                    theseProducts.Add(productOrder.Product);
+                }
+                List <ProductJSON> jSONProducts = new List <ProductJSON>();
+                foreach (Product product in theseProducts) {
+                    int index = jSONProducts.FindIndex(x => x.ProductID == product.ProductID);
+                    if (index != -1) 
+                    {
+                        jSONProducts[index].Quantity ++;
+                    } 
+                    else 
+                    {
+                        ProductJSON newProduct = new ProductJSON()
+                        {
+                            ProductID = product.ProductID,
+                            Name = product.Title,
+                            Price = product.Price,
+                            Quantity = 1
+                        };
+                        jSONProducts.Add(newProduct);
+                    }
+                }
+                OrderJSON orderWithProducts = new OrderJSON()
+                {
+                    OrderID = order.OrderID,
+                    CustomerID = order.CustomerID,
+                    PaymentTypeID = order.PaymentTypeID,
+                    Products = jSONProducts
+                };
                 if (order == null)
                 {
                     return NotFound();
                 }
                 
-                return Ok(order);
+                return Ok(orderWithProducts);
             }
             catch (System.InvalidOperationException ex)
             {
@@ -64,26 +94,16 @@ namespace BangazonAPI.Controllers
             }
         }
 
+        // POST url/Order
+        // Posts a new order -- Eliza
         [HttpPost]
-        public IActionResult Post([FromBody] Product addProduct)
+        public IActionResult Post([FromBody] Order newOrder)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Order newOrder = new Order()
-            {
-                CustomerID = addProduct.CustomerID,
-                PaymentTypeID = 1
-            };
-            _context.Order.Add(newOrder);
-            ProductOrder newProductOrder = new ProductOrder()
-            {
-                OrderID = newOrder.OrderID,
-                ProductID = addProduct.ProductID
-            };
-            _context.ProductOrder.Add(newProductOrder);
-            
+            _context.Order.Add(newOrder); 
             try
             {
                 _context.SaveChanges();
@@ -99,8 +119,33 @@ namespace BangazonAPI.Controllers
                     throw;
                 }
             }
-
             return CreatedAtRoute("GetSingleOrder", new { id = newOrder.OrderID }, newOrder);
+        }
+
+        [HttpPost("addproduct")]
+        public IActionResult Post([FromBody] ProductOrder newProductOrder )
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _context.ProductOrder.Add(newProductOrder);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrderExists(newProductOrder.ProductOrderID))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok(newProductOrder);
         }
 
         private bool OrderExists(int orderID)
@@ -117,6 +162,8 @@ namespace BangazonAPI.Controllers
         //     "DateCreated": "0001-01-01T00:00:00",
         //     "PaymentTypeID": 1
         // }
+
+        
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Order modifiedOrder)
