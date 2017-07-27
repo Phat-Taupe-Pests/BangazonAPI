@@ -47,7 +47,7 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                Order order = _context.Order.Single(m => m.OrderID == id);
+                Order order = _context.Order.Include(o => o.ProductOrders).Single(m => m.OrderID == id);
 
                 if (order == null)
                 {

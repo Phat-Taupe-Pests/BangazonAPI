@@ -33,7 +33,7 @@ namespace BangazonAPI.Models
             IsActive = 1;
         }
 
-        // ICollection<Product> Products;
+        ICollection<Product> Products;
         // Setting the Foreign Key relationship with Orders --Eliza
         ICollection<Order> Orders;
         ICollection<PaymentType> PaymentTypes;
