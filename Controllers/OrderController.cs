@@ -47,7 +47,10 @@ namespace BangazonAPI.Controllers
 
             try
             {
+                // IQueryable<Product> products = _context.ProductOrder.Select(o => o.Product);
+                // IQueryable<object> ProductInOrder = _context.ProductOrder.Select(c => c.Product).Where(o => o.OrderID = o.OrderId);
                 Order order = _context.Order.Include(o => o.ProductOrders).Single(m => m.OrderID == id);
+
 
                 if (order == null)
                 {
