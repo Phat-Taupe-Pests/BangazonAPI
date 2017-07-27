@@ -164,12 +164,23 @@ namespace BangazonAPI.Controllers
         }
 
         //Get All Inactive Customers
-        [HttpGet("?active={status}")]
-        public IActionResult Get(string status)
+        //Retrieves a true or false from status variable in the url and retrieves all customers 
+        //that have IsActive set to true or false based on the input
+        [HttpGet("active={status}")]
+        public IActionResult Get([FromRoute] string status)
         {
-            if (!ModelState.IsValid)
+            int boolValue;
+            if(status=="false")
             {
-                return BadRequest(ModelState);
+                boolValue=0;
+            } 
+            else if(status=="true")
+            {
+                boolValue=1;
+            }
+            else
+            {
+                return BadRequest();
             }
 
             try
@@ -177,20 +188,21 @@ namespace BangazonAPI.Controllers
                 //will search the _context.Customer for an entry that has the id we are looking for
                 //if found, will return that customer
                 //if not found will return 404. 
-                Customer customer = _context.Customer.Single(m => m.CustomerID == id);
-
-                if (customer == null)
+                IQueryable<Customer> iCustomers = _context.Customer.Where(m => m.IsActive == boolValue);
+                
+                if (iCustomers == null)
                 {
                     return NotFound();
                 }
                 
-                return Ok(customer);
+                return Ok(iCustomers);
             }
             //if the try statement fails for some reason, will return error of what happened. 
             catch (System.InvalidOperationException ex)
             {
                 return NotFound(ex);
             }
+            
         }
 
     }
