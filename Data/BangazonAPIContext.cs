@@ -30,6 +30,9 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Customer>()
                 .Property(b => b.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.DateLastInteraction)
+                .HasDefaultValueSql("strftime('%Y-%m-%d')");
             modelBuilder.Entity<Employee>()
                 .Property(c => c.DateStarted)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
