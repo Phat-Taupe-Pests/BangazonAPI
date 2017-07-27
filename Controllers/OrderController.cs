@@ -96,6 +96,7 @@ namespace BangazonAPI.Controllers
 
         // POST url/Order
         // Posts a new order -- Eliza
+        // Send in an order object {"CustomerID": integer}
         [HttpPost]
         public IActionResult Post([FromBody] Order newOrder)
         {
@@ -122,6 +123,9 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("GetSingleOrder", new { id = newOrder.OrderID }, newOrder);
         }
 
+        //Adds a product to an order and creates a ProductOrder. This allows us to add multiple products to the same order. --Eliza
+        // You need to send up a product order object.
+        // {"OrderID": integer, "ProductID": integer}
         [HttpPost("addproduct")]
         public IActionResult Post([FromBody] ProductOrder newProductOrder )
         {
