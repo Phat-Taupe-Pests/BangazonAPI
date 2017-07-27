@@ -40,7 +40,8 @@ namespace BangazonAPI
             // });
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 
             //Sets evnironment variable to BANGAZON_DB  

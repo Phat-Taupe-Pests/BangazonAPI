@@ -47,15 +47,9 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                // IQueryable<Product> products = _context.ProductOrder.Where(o => o.OrderID == id).Select(o => o.Product);
-                // IQueryable<object> ProductInOrder = _context.ProductOrder.Select(c => c.Product).Where(o => o.OrderID = o.OrderId);
                 // ICollection<Product> productsList = new List<Product>();
-                Order order = _context.Order.Include("Products").Single(m => m.OrderID == id);
-                // foreach (var thing in products)
-                // {
-                //     order.Products.Add(thing);
-                // }
-
+                // Order order = _context.Order.Include("Products").Single(m => m.OrderID == id);
+                Order order = _context.Order.Include("ProductOrders.Product").Single(m => m.OrderID == id);
 
                 if (order == null)
                 {
@@ -69,39 +63,26 @@ namespace BangazonAPI.Controllers
                 return NotFound(ex);
             }
         }
-        [HttpPost("addproduct")]
-        public IActionResult Post([FromBody] ProductOrder newProductOrder)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            _context.ProductOrder.Add(newProductOrder);
-
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                Console.WriteLine("sorry bubs");
-            }
-
-            return Ok();
-        }
-        
-        // POST url/Order
-        // Posts a new order -- Eliza
         [HttpPost]
-        public IActionResult Post([FromBody] Order newOrder)
+        public IActionResult Post([FromBody] Product addProduct)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            Order newOrder = new Order()
+            {
+                CustomerID = addProduct.CustomerID,
+                PaymentTypeID = 1
+            };
             _context.Order.Add(newOrder);
+            ProductOrder newProductOrder = new ProductOrder()
+            {
+                OrderID = newOrder.OrderID,
+                ProductID = addProduct.ProductID
+            };
+            _context.ProductOrder.Add(newProductOrder);
             
             try
             {
@@ -109,7 +90,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CustomerExists(newOrder.OrderID))
+                if (OrderExists(newOrder.OrderID))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -119,10 +100,10 @@ namespace BangazonAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("GetSingleCustomer", new { id = newOrder.OrderID }, newOrder);
+            return CreatedAtRoute("GetSingleOrder", new { id = newOrder.OrderID }, newOrder);
         }
 
-        private bool CustomerExists(int orderID)
+        private bool OrderExists(int orderID)
         {
           return _context.Order.Count(e => e.OrderID == orderID) > 0;
         }
@@ -150,7 +131,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }

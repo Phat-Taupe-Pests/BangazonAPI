@@ -38,8 +38,8 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-            modelBuilder.Entity<ProductOrder>()
-                .HasKey(po => new {po.ProductID, po.OrderID});
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasKey(po => new {po.ProductID, po.OrderID});
             // modelBuilder.Entity<ProductOrder>()
             //     .HasOne(po => po.Order)
             //     .WithMany(p => p.ProductOrders)
