@@ -18,9 +18,10 @@ namespace BangazonAPI.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
+        public DbSet<TrainingProgram> TrainingProgram { get; set; }
         public DbSet<Department> Department { get; set; }
-        // public DbSet<TrainingProgram> TrainingProgram { get; set; }
         public DbSet<Computer> Computer { get; set; }
+        public DbSet<ProductOrder> ProductOrder {get; set;}
 
 
         //Sets the DateCreated on the <Customer> to todays date every time a new instance of Customer is added to the Context. 
@@ -30,6 +31,9 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Customer>()
                 .Property(b => b.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.DateLastInteraction)
+                .HasDefaultValueSql("strftime('%Y-%m-%d')");
             modelBuilder.Entity<Employee>()
                 .Property(c => c.DateStarted)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
@@ -37,6 +41,17 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasKey(po => new {po.ProductID, po.OrderID});
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasOne(po => po.Order)
+            //     .WithMany(p => p.ProductOrders)
+            //     .HasForeignKey(po => po.OrderID);
+            // modelBuilder.Entity<ProductOrder>()
+            //     .HasOne(po => po.Product)
+            //     .WithMany(o => o.ProductOrders)
+            //     .HasForeignKey(po => po.ProductID);
+                
         }
 
     }

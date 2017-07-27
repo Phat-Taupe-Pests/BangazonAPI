@@ -19,12 +19,14 @@ namespace BangazonAPI.Models
 
         [Required]
         public double Price {get; set;}
+        public int ProductTypeID {get; set;}
+        public ProductType ProductType {get; set;}
 
-        //public int ProductTypeID {get; set;}
-        //public ProductType ProductType {get; set;}
+        public int CustomerID {get; set;}
+        public Customer Customer {get; set;}
 
-        //public int CustomerID {get; set;}
-        //public Customer Customer {get; set;}
+        public virtual ICollection<ProductOrder> ProductOrders {get; set;}
+
     }
 
 }

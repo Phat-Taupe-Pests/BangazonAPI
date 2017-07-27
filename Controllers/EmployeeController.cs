@@ -80,6 +80,7 @@ namespace BangazonAPI.Controllers
         }
 
         // POST
+
         //http://localhost:5000/Employee/ will post new Employee to the DB
         //requires {"Name": "string", "JobTitle": "string", "DepartmentID": validDeptIdInt} to post. 
 
@@ -123,8 +124,10 @@ namespace BangazonAPI.Controllers
         }
 
         // PUT 
+
          //http://localhost:5000/Employee/{id} will edit a employee entry in the DB.  
          //Needs entire employee value set in order to change/update 
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Employee modifiedEmployee)
         {
