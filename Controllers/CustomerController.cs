@@ -167,7 +167,7 @@ namespace BangazonAPI.Controllers
         //Retrieves a true or false from status variable in the url and retrieves all customers 
         //that have IsActive set to true or false based on the input
         [HttpGet("active={status}")]
-        public IActionResult Get([FromRoute] string status)
+        public IActionResult Get([FromBody] string status)
         {
             int boolValue;
             if(status=="false")
