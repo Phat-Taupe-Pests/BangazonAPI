@@ -14,10 +14,10 @@ namespace BangazonAPI.Models
         public int TrainingProgramID {get; set;}
 
         [Required]
-        public DateTime DateStart {get; set;}
+        public DateTime? DateStart {get; set;}
 
         [Required]
-        public DateTime DateEnd {get; set;}
+        public DateTime? DateEnd {get; set;}
 
         [Required]        
         public int MaxAttendees {get; set;}

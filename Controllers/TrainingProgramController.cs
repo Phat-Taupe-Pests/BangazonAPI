@@ -154,7 +154,7 @@ namespace BangazonAPI.Controllers
             // Creates a DateTime variable for today.
             DateTime thisDay = DateTime.Today;
             // Compares today with the date the training program starts.
-            var compare = DateTime.Compare(thisDay, singleTrainingProgram.DateStart);
+            var compare = DateTime.Compare(thisDay, (DateTime)singleTrainingProgram.DateStart);
             // Only deletes the program if it hasn't started yet, else it returns a bad request.
             if (compare < 0)
             {
