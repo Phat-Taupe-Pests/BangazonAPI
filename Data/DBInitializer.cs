@@ -127,6 +127,12 @@ namespace BangazonAPI.Data
                         CustomerID = customers.Single(c => c.FirstName == "Sequina").CustomerID
                     }
                 };
+                
+                foreach(Order p in orders)
+                {
+                    context.Add(p);
+                }
+                context.SaveChanges();
 
                 var departments = new Department[]
                 {
