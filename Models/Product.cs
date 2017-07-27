@@ -19,12 +19,12 @@ namespace BangazonAPI.Models
 
         [Required]
         public double Price {get; set;}
-
-        //public int ProductTypeID {get; set;}
-        //public ProductType ProductType {get; set;}
-
-        //public int CustomerID {get; set;}
-        //public Customer Customer {get; set;}
+//Foreign Key Relationship is Product type
+        public int ProductTypeID {get; set;}
+        public ProductType ProductType {get; set;}
+//Foreign Key Rlationship with Customer
+        public int CustomerID {get; set;}
+        public Customer Customer {get; set;}
     }
 
 }
