@@ -34,10 +34,6 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Customer>()
                 .Property(p => p.DateLastInteraction)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-            modelBuilder.Entity<Employee>()
-                .Property(c => c.DateStarted)
-                .HasDefaultValueSql("strftime('%Y-%m-%d')");
-            // Sets the DateCreated for the Order. -- Eliza
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
