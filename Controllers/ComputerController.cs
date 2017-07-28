@@ -7,14 +7,16 @@ using BangazonAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+// Written by: Matt Augsburger
 namespace BangazonAPI.Controllers
 {
-    // Controller created by MEA
+    // Class to PUT/POST/GET/DELETE computers to the Bangazon API.
     [Route("[controller]")]
     public class ComputerController : Controller
     {
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
+        // Constructor method to create an instance of context to communicate with our database.
         public ComputerController(BangazonAPIContext ctx)
         {
             _context = ctx;
@@ -96,7 +98,7 @@ namespace BangazonAPI.Controllers
 
             return CreatedAtRoute("GetSingleComputer", new { id = newComputer.ComputerID }, newComputer);
         }
-
+        // Checks if the computer already exists in the database
         private bool ComputerExists(int computerID)
         {
           return _context.Computer.Count(e => e.ComputerID == computerID) > 0;

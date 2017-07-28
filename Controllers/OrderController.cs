@@ -7,20 +7,23 @@ using BangazonAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+// Written by: Eliza Meeks
 namespace BangazonAPI.Controllers
 {
+    // Class to PUT/POST/GET/DELETE Orders to the Bangazon API.
     [Route("[controller]")]
     public class OrderController : Controller
     {
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
+        // Constructor method to create an instance of context to communicate with our database.
         public OrderController(BangazonAPIContext ctx)
         {
             _context = ctx;
         }
 
         // GET url/Order
-        // Gets a list of all orders -- Eliza
+        // Gets a list of all orders
         [HttpGet]
         public IActionResult Get()
         {
@@ -36,7 +39,7 @@ namespace BangazonAPI.Controllers
         }
 
         // GET url/Order/{id}
-        // Gets one order based on an id -- Ben
+        // Gets one order based on an id
         // Formats it for the purposes of clean JSON
         [HttpGet("{id}", Name = "GetSingleOrder")]
         public IActionResult Get([FromRoute] int id)
@@ -95,7 +98,7 @@ namespace BangazonAPI.Controllers
         }
 
         // POST url/Order
-        // Posts a new order -- Eliza
+        // Posts a new order
         // Send in an order object {"CustomerID": integer}
         [HttpPost]
         public IActionResult Post([FromBody] Order newOrder)
@@ -123,7 +126,7 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("GetSingleOrder", new { id = newOrder.OrderID }, newOrder);
         }
 
-        //Adds a product to an order and creates a ProductOrder. This allows us to add multiple products to the same order. --Eliza
+        // Adds a product to an order and creates a ProductOrder. This allows us to add multiple products to the same order.
         // You need to send up a product order object.
         // {"OrderID": integer, "ProductID": integer}
         [HttpPost("addproduct")]
@@ -151,14 +154,14 @@ namespace BangazonAPI.Controllers
             }
             return Ok(newProductOrder);
         }
-
+        // Helper method to check if the order already exists in the database
         private bool OrderExists(int orderID)
         {
           return _context.Order.Count(e => e.OrderID == orderID) > 0;
         }
 
         // PUT url/Order/5
-        // Edits something in the database; you must send the ENTIRE object up. -- Eliza
+        // Edits something in the database; you must send the ENTIRE object up.
         // Requires an Object:
         // {
         //     "OrderID": 1,
@@ -166,8 +169,6 @@ namespace BangazonAPI.Controllers
         //     "DateCreated": "0001-01-01T00:00:00",
         //     "PaymentTypeID": 1
         // }
-
-        
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Order modifiedOrder)
@@ -204,7 +205,7 @@ namespace BangazonAPI.Controllers
         }
 
         // DELETE url/Order/5
-        // Deletes something based on an id. -- Eliza
+        // Deletes something based on an id.
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

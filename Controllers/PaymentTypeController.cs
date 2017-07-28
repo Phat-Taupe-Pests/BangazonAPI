@@ -8,13 +8,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-//Written by Ben Greaves
+//Written by: Ben Greaves
 
 namespace BangazonAPI.Controllers
 {
+    // Class to PUT/POST/GET/DELETE payment type to the Bangazon API.
     [Route("[controller]")]
     public class PaymentTypeController : Controller
     {
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
         public PaymentTypeController(BangazonAPIContext ctx)
         {
@@ -103,7 +105,7 @@ namespace BangazonAPI.Controllers
 
             return CreatedAtRoute("GetSinglePaymentType", new { id = newPaymentType.PaymentTypeID }, newPaymentType);
         }
-
+        // Helper method to check if the payment type exists in the database
         private bool PaymentTypeExists(int paymentTypeID)
         {
           return _context.PaymentType.Count(e => e.PaymentTypeID == paymentTypeID) > 0;

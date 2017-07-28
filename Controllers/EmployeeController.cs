@@ -16,7 +16,7 @@ namespace BangazonAPI.Controllers
     //Creates a new Employee controller class that inherits methods from AspNetCore Controller class
     public class EmployeeController : Controller
     {
-        
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
        
         public EmployeeController(BangazonAPIContext ctx)

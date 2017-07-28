@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BangazonAPI
 {
+    // This class runs processes when the program starts up
     public class Startup
     {
         public Startup(IHostingEnvironment env)
