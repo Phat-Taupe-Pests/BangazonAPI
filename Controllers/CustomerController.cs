@@ -163,47 +163,5 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        //Get All Inactive Customers
-        //Retrieves a true or false from status variable in the url and retrieves all customers 
-        //that have IsActive set to true or false based on the input
-        [HttpGet("active={status}")]
-        public IActionResult Get([FromBody] string status)
-        {
-            int boolValue;
-            if(status=="false")
-            {
-                boolValue=0;
-            } 
-            else if(status=="true")
-            {
-                boolValue=1;
-            }
-            else
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                //will search the _context.Customer for an entry that has the id we are looking for
-                //if found, will return that customer
-                //if not found will return 404. 
-                IQueryable<Customer> iCustomers = _context.Customer.Where(m => m.IsActive == boolValue);
-                
-                if (iCustomers == null)
-                {
-                    return NotFound();
-                }
-                
-                return Ok(iCustomers);
-            }
-            //if the try statement fails for some reason, will return error of what happened. 
-            catch (System.InvalidOperationException ex)
-            {
-                return NotFound(ex);
-            }
-            
-        }
-
     }
 }
