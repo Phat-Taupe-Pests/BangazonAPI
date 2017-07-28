@@ -198,21 +198,21 @@ namespace BangazonAPI.Data
                 {
                     new Employee { 
                         Name = "Joe Dirt",
-                        DateStarted = new DateTime(),
+                        DateStarted = new DateTime(1988,09,16),
                         JobTitle = "Graphic Designer",
                         IsSupervisor = 0,
                         DepartmentID = departments.Single(x => x.Name == "Marketing").DepartmentID
                     },
                     new Employee { 
                         Name = "Kevin Garvey",
-                        DateStarted = new DateTime(),
+                        DateStarted = new DateTime(1988,09,16),
                         JobTitle = "Head of Accounting",
                         IsSupervisor = 1,
                         DepartmentID = departments.Single(x => x.Name == "Accounting").DepartmentID
                     },
                     new Employee { 
                         Name = "Max Payne",
-                        DateStarted = new DateTime(),
+                        DateStarted = new DateTime(1988,09,16),
                         JobTitle = "Senior Developer",
                         IsSupervisor = 0,
                         DepartmentID = departments.Single(x => x.Name == "IT").DepartmentID
