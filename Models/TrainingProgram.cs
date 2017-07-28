@@ -5,8 +5,9 @@ using System.ComponentModel.DataAnnotations;
 //Written by: Eliza Meeks
 namespace BangazonAPI.Models
 {
-    //Creates a new TrainingProgram class
-    //TrainingProgramID is the Primary Key
+    // Contains information about the employee training programs at Banagazon
+    // Includes Name, DateStart, DateEnd, and MaxAttendees
+    // TrainingProgramID is the Primary Key
     public class TrainingProgram
     {
         // Database structure for our Trianing Programs.

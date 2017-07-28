@@ -6,8 +6,9 @@ using System.ComponentModel.DataAnnotations;
 namespace BangazonAPI.Models
 {
     // Class Created by MEA
-    // Class holds ProdctTypeID and A Name
-    // Class is Public
+    // Contains the types of products offered by Bangazon
+    // Contains Name and a collection of products are of this product type
+    // Class is Public. ProductTypeID is the primary key
     public class ProductType
     {
         [Key]

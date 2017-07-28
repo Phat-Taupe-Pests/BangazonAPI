@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BangazonAPI.Models
 {
-    // A Class designed to return JSON in a neat format
+    // A Class that structures products as JSON
+    // Contains Name, Price, Quantity, and the ProductID
     public class ProductJSON
     {
         [Required]
