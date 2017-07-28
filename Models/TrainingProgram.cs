@@ -13,6 +13,9 @@ namespace BangazonAPI.Models
         [Key]
         public int TrainingProgramID {get; set;}
 
+        [Required] //Added by Ben Greaves
+        public string Name {get; set;}
+
         [Required]
         public DateTime? DateStart {get; set;}
 
@@ -21,7 +24,5 @@ namespace BangazonAPI.Models
 
         [Required]        
         public int MaxAttendees {get; set;}
-
-
     }
 }
