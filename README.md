@@ -37,9 +37,14 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 
 * You can update the info on a specific product by running a Put call to `http://localhost:5000/product/{productID}`
     * The Put must send in the complete object which will include a `productID`, `title`, `description`, `price`, `productTypeID`, `customerID`.
-    * Example: `{"productID": 1, "title": "Taco", "description": "Delisious beef tacos in a hard corn tortia shell", "price": 0.99, "productTypeID": 1, "customerID": 1}`
+    * Example: `{"productID": 1, "title": "Phoenix Wand", "description": "Phoenix feathers are capable of the greatest range of magic, though they may take longer than either unicorn or dragon cores to reveal this.", "price": 10.99, "productTypeID": 1, "customerID": 1}`
+>Note you need to have a product, customer and productType unique IDs number to put correctly
 
 * You can delete a product by running a Delete call to `http://localhost:5000/product{productID}`
+
+* You can add a product by running a Post call to `http://localhost:5000/product`
+    * You must submit a `ProductTypeID`, `Price`, `Title`, `Description` and `CustomerID`.
+    * Example: `{"ProductTypeID": 1, "Price": 10.50, "Title": "Dragon Wand", "Description": "As a rule, dragon heartstrings produce wands with the most power, and which are capable of the most flamboyant spells.", "CustomerID": 1}`
 
 ### Product Types
 
@@ -48,8 +53,14 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a product types unique ID number to get the correct information
 
 * You can update the info on a specific product type by running a Put call to `http://localhost:5000/producttype/{producttypeID}`
+    * Running a put requires that you submit the entire object.
+    * Example: `{ "productTypeID": 1, "name": "Wand" }`
 
 * You can delete a product type by running a Delete call to `http://localhost:5000/producttype{producttypeID}`
+
+* You can enter a new product type by running a Post call to `http://localhost:5000/producttype`
+    * You must put a `name` with a post.
+    * Example: `{ "name": "Spell Books" }`
 
 ### Payment Types
 
@@ -58,19 +69,31 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a payment types unique ID number to get the correct information
 
 * You can update the info on a specific payment type by running a Put call to `http://localhost:5000/paymenttype/{paymenttypeID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "paymentTypeID": 1, "name": "Galleon", "accountNumber": 123459889, "customerID": 1 }`
 
 * You can delete a payment type by running a Delete call to `http://localhost:5000/paymenttype{paymenttypeID}`
+
+* You can enter a new payment type by running a Post call to `http://localhost:5000/paymenttype`
+    * You must put a `name`, `accountNumber`, and `customerID` with a Post.
+    * Example: `{ "name": "Knut", "accountNumber": 123459889, "customerID": 1 }`
 
 
 ### Order
 
-* You can access a list of all payment types by running a Get call to `http://localhost:5000/paymenttype`
-* You can get the information on a single payment type by runnning a Get call to `http://localhost:5000/paymenttype/{paymenttypeID}`
->Note you need to have a payment types unique ID number to get the correct information
+* You can access a list of all orders by running a Get call to `http://localhost:5000/order`
+* You can get the information on a single order by runnning a Get call to `http://localhost:5000/order/{orderID}`
+>Note you need to have a order unique ID number to get the correct information
 
-* You can update the info on a specific payment type by running a Put call to `http://localhost:5000/paymenttype/{paymenttypeID}`
+* You can update the info on a specific order by running a Put call to `http://localhost:5000/order/{orderID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "orderID": 1, "dateCreated": "2017-07-28T00:00:00", "customerID": 3 }`
 
-* You can delete a payment type by running a Delete call to `http://localhost:5000/paymenttype{paymenttypeID}`
+* You can delete an order by running a Delete call to `http://localhost:5000/order{orderID}`
+
+* You can enter a new payment type by running a Post call to `http://localhost:5000/order`
+    * You must put a `customerID` with a Post.
+    * Example: `{ "customerID": 1 }`
 
 ### Employees
 
@@ -79,8 +102,12 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a employee unique ID number to get the correct information
 
 * You can update the info on a specific employee by running a Put call to `http://localhost:5000/employee/{employeeID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "employeeID": 1, "name": "Minerva McGonagall", "jobTitle": "Professor", "dateStarted": "0001-01-01T00:00:00", "isSupervisor": 1, "departmentID": 1}`
 
-
+* You can enter a new payment type by running a Post call to `http://localhost:5000/employee`
+    * You must put a `name`, `jobTitle`, `dateStarted`, `isSupervisor` and `departmentID` with a Post.
+    * Example: `{ "name": "Minerva McGonagall", "jobTitle": "Professor", "dateStarted": "12-01-1956", "isSupervisor": 0, "departmentID": 1}`
 
 ### Departments
 
@@ -89,8 +116,12 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a department unique ID number to get the correct information
 
 * You can update the info on a specific department by running a Put call to `http://localhost:5000/department/{departmentID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "departmentID": 1, "name": "Transfiguration", "expenseBudget": 200000 }`
 
-
+* You can enter a new payment type by running a Post call to `http://localhost:5000/department`
+    * You must put a `name` and `expenseBudget` with a Post.
+    * Example: `{ "name": "Transfiguration" "expenseBudget": 100 }`
 
 ### Computer
 
@@ -99,8 +130,14 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a computer unique ID number to get the correct information
 
 * You can update the info on a specific computer by running a Put call to `http://localhost:5000/computer/{computerID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "computerID": 1, "datePurchased": "0001-01-01T00:00:00", "dateDecomissioned": "12-13-2017" }`
 
 * You can delete a computer by running a Delete call to `http://localhost:5000/computer{computerID}`
+
+* You can enter a new payment type by running a Post call to `http://localhost:5000/computer`
+    * You must put a `datePurchased` with a Post.
+    * Example: `{ "datePurchased": "0001-01-01T00:00:00" }`
 
 ### Training Programs
 
@@ -109,6 +146,12 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note you need to have a training program unique ID number to get the correct information
 
 * You can update the info on a specific training program by running a Put call to `http://localhost:5000/trainingprogram/{trainingprogramID}`
+    * Running a Put requires that you submit the entire object.
+    * Example: `{ "trainingProgramID": 1 "dateStart": "02-14-2018", "dateEnd": "02-15-2018", "maxAttendees": 50 }`
 
 * You can delete a training program by running a Delete call to `http://localhost:5000/trainingprogram{trainingprogramID}`
 >Note - you can only delete a training program if the current date is before the start date of a program. You cannot delete programs that have already happened. 
+
+* You can enter a new payment type by running a Post call to `http://localhost:5000/trainingProgram`
+    * You must put a `dateStart`, `dateEnd`, and `maxAttendees` with a Post.
+    * Example: `{ "dateStart": "02-14-2018", "dateEnd": "10-15-2018", "maxAttendees": 50 }`
