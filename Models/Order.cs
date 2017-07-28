@@ -10,11 +10,12 @@ namespace BangazonAPI.Models
     // and a collection of productOrders, join table entries representing products added to this order
     public class Order
     {
+        
         [Key]
         public int OrderID {get; set;}
 
         [Required]
-        public DateTime? DateCreated {get; set;}
+        public DateTime DateCreated {get; set;}
         
         public int CustomerID {get; set;}
         // Setting foreign key relationship with Customer --Eliza
