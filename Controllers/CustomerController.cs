@@ -163,5 +163,16 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
+
+        Uri uri = new Uri("http://localhost:5000/");
+        
+
+        [HttpGet]
+        public IActionResult Get([FromUri] Customer status)
+        {
+            int boolValue = 0;
+
+
+        }
     }
 }
