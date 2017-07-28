@@ -27,7 +27,7 @@ namespace BangazonAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IQueryable<object> orders = _context.Order.Include("ProductOrders.Product");
+            IQueryable<object> orders = _context.Order;
 
             if (orders == null)
             {
