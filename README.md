@@ -139,18 +139,22 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 
 * GET You can access a list of all orders by running a Get call to `http://localhost:5000/order`
 * GET one. You can get the information on a single order by runnning a Get call to `http://localhost:5000/order/{orderID}`
+* GET one returns JSON containing the order details as well as an array of products added to that order
 >Note you need to have a order unique ID number to get the correct information
 
 * PUT You can update the info on a specific order by running a Put call to `http://localhost:5000/order/{orderID}`
     * Running a Put requires that you submit the entire object.
     * Example: `{ "orderID": 1, "dateCreated": "2017-07-28T00:00:00", "customerID": 3 }`
 
-* DELETE You can delete an order by running a Delete call to `http://localhost:5000/order{orderID}`
+* DELETE You can delete an order by running a Delete call to `http://localhost:5000/order/{orderID}`
 
-* POST You can enter a new payment type by running a Post call to `http://localhost:5000/order`
+* POST You can enter a new order by running a Post call to `http://localhost:5000/order`
     * You must put a `customerID` with a Post.
     * The DateCreate field is auto-generated with the current date.
     * Example: `{ "customerID": 1 }`
+    
+* POST You can add a new product to an order by running a Post call to `http://localhost:5000/order/addproduct`
+    * You must include the `orderID` and `productID` in the body of the POST
 
 ### Employees
 
