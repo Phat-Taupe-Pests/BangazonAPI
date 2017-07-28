@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-//Written by: Pair Programmed as an entire team
+//Written by: Chaz Henricks, Eliza Meeks, Andrew Rock, Matt Augsburger, Ben Greaves
 //all code written as a team unless stated otherwise
 namespace BangazonAPI.Controllers
 {

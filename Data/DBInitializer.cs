@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace BangazonAPI.Data
 {
+    // Class to seed our database with data for testing purposes.
     public static class DbInitializer
     {
+        // Method runs on startup to initialize dummy data.
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new BangazonAPIContext(serviceProvider.GetRequiredService<DbContextOptions<BangazonAPIContext>>()))
@@ -16,9 +18,9 @@ namespace BangazonAPI.Data
                 // Look for any Customers.
                 if (context.Customer.Any())
                 {
-                    return;   // DB has been seeded
+                    return;   // DB has been seeded, the rest of this method doesn't need to run.
                 }
-
+                // Creating new instances of Customer
                 var customers = new Customer[]
                 {
                     new Customer { 
@@ -35,14 +37,15 @@ namespace BangazonAPI.Data
                         LastName = "Jones"
                     },
                 };
-
+                // Adds each new customer into the context
                 foreach (Customer i in customers)
                 {
                     context.Customer.Add(i);
                 }
+                // Saves the customers to the database
                 context.SaveChanges();
 
-
+                // Creating new instances of ProductType
                 var productTypes = new ProductType[]
                 {
                     new ProductType { 
@@ -56,12 +59,15 @@ namespace BangazonAPI.Data
                     },
                 };
 
+                // Adds each new product type into the context
                 foreach (ProductType p in productTypes)
                 {
                     context.ProductType.Add(p);
                 }
+                // Saves the customers to the database
                 context.SaveChanges();
 
+                // Creating new instances of payment type
                 var paymentTypes = new PaymentType[]
                 {
                     new PaymentType{
@@ -80,12 +86,15 @@ namespace BangazonAPI.Data
                         CustomerID = customers.Single(n => n.FirstName == "Nigel").CustomerID
                     },
                 };
-
+                // Adds each new payment type into the context
                 foreach (PaymentType t in paymentTypes)
                 {
                     context.PaymentType.Add(t);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
+
+                // Creating new instances of products
                 var products = new Product[]
                 {
                     new Product{
@@ -110,13 +119,15 @@ namespace BangazonAPI.Data
                         CustomerID = customers.Single(c => c.FirstName == "Nigel").CustomerID
                     }
                 };
-
+                // Adds each new product into the context
                 foreach(Product p in products)
                 {
                     context.Add(p);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
 
+                // Creating new instances of order
                 var orders = new Order[]
                 {
                     new Order{
@@ -127,13 +138,14 @@ namespace BangazonAPI.Data
                         CustomerID = customers.Single(c => c.FirstName == "Sequina").CustomerID
                     }
                 };
-                
+                // Adds each new order into the context
                 foreach(Order p in orders)
                 {
                     context.Add(p);
                 }
                 context.SaveChanges();
 
+                // Creating new instances of departments
                 var departments = new Department[]
                 {
                     new Department { 
@@ -149,11 +161,15 @@ namespace BangazonAPI.Data
                         ExpenseBudget = 150000
                     }
                 };
+                // Adds each new department into the context
                 foreach (Department dept in departments)
                 {
                     context.Department.Add(dept);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
+
+                // Creating new instances of computer
                 var computers = new Computer[]
                 {
                     new Computer { 
@@ -166,11 +182,15 @@ namespace BangazonAPI.Data
                         DatePurchased = new DateTime(2015, 6, 6),
                     }
                 };
+                // Adds each new computer into the context
                 foreach (Computer comp in computers)
                 {
                     context.Computer.Add(comp);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
+
+                // Creating new instances of training program
                 var trainingPrograms = new TrainingProgram[]
                 {
                     new TrainingProgram {
@@ -193,11 +213,15 @@ namespace BangazonAPI.Data
 
                     }
                 };
+                // Adds each new training program into the context
                 foreach (TrainingProgram tp in trainingPrograms)
                 {
                     context.TrainingProgram.Add(tp);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
+
+                // Creating new instances of employee
                 var employees = new Employee[]
                 {
                     new Employee { 
@@ -226,8 +250,10 @@ namespace BangazonAPI.Data
                 {
                     context.Employee.Add(emp);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
 
+                // Creating new instances of product orders
                 var ordersWithProducts = new ProductOrder[]
                 {
                     new ProductOrder {
@@ -243,10 +269,12 @@ namespace BangazonAPI.Data
                         ProductID = 1
                     }
                 };
+                // Adds each new product into the context
                 foreach (ProductOrder product in ordersWithProducts)
                 {
                     context.ProductOrder.Add(product);
                 }
+                // Saves the additions to the database
                 context.SaveChanges();
 
             }

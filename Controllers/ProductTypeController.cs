@@ -7,14 +7,16 @@ using BangazonAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+//Written by: Matt Augsburger
 namespace BangazonAPI.Controllers
 {
-    // Controller created by MEA
+    // Class to PUT/POST/GET/DELETE product types to the Bangazon API.
     [Route("[controller]")]
     public class ProductTypeController : Controller
     {
+        //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
         private BangazonAPIContext _context;
+        // Constructor method to create an instance of context to communicate with our database.
         public ProductTypeController(BangazonAPIContext ctx)
         {
             _context = ctx;

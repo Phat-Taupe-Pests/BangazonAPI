@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 //Written by: Andrew Rock
-//code derived from customer controller
 namespace BangazonAPI.Controllers
 {
     //Sets URL route to <websitename>/department

@@ -11,7 +11,7 @@ namespace BangazonAPI.Data
         public BangazonAPIContext(DbContextOptions<BangazonAPIContext> options)
             : base(options)
         { }
-
+        // Creates tables in the database; takes our models and turns them into tables in the database. Any models without a DbSet do not turn into tables in the database.
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Employee> Employee { get; set; }
@@ -41,16 +41,6 @@ namespace BangazonAPI.Data
             modelBuilder.Entity<Order>()
                 .Property(c => c.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d')");
-            // modelBuilder.Entity<ProductOrder>()
-            //     .HasKey(po => new {po.ProductID, po.OrderID});
-            // modelBuilder.Entity<ProductOrder>()
-            //     .HasOne(po => po.Order)
-            //     .WithMany(p => p.ProductOrders)
-            //     .HasForeignKey(po => po.OrderID);
-            // modelBuilder.Entity<ProductOrder>()
-            //     .HasOne(po => po.Product)
-            //     .WithMany(o => o.ProductOrders)
-            //     .HasForeignKey(po => po.ProductID);
                 
         }
 
