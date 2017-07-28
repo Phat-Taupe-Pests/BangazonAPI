@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+// Written by: Ben Greaves
 namespace BangazonAPI.Models
 {
-    // Created by Ben Greaves
+
     public class PaymentType
     {
     // Contains a payment type for a customer. A customer can have multiple payment types

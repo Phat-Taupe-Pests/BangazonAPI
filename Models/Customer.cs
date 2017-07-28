@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-//Written by the entire team. 
+//Written by: Chaz Henricks, Matt Augsburger, Ben Greaves, Andrew Rock, Eliza Meeks 
 namespace BangazonAPI.Models
 {
     // Contains information about our customers (vendors and purchasers)
