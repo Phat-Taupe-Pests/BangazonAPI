@@ -24,6 +24,6 @@ namespace BangazonAPI.Models
         public DateTime? DateEnd {get; set;}
 
         [Required]        
-        public int MaxAttendees {get; set;}
+        public int? MaxAttendees {get; set;}
     }
 }

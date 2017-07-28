@@ -21,6 +21,7 @@ namespace BangazonAPI.Models
         public string FirstName {get; set;}
         [Required]
         public string LastName {get; set;}
+
         public DateTime? DateCreated {get; set;}
         public DateTime? DateLastInteraction {get; set;}
         [Required]

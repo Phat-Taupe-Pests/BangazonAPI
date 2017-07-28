@@ -19,7 +19,7 @@ namespace BangazonAPI.Models
         public string Name {get; set;}
         [Required]
         public string JobTitle {get; set;}
-        [Required]
+     
         public DateTime? DateStarted {get; set;}
 
         [Required]
