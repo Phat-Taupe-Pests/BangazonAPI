@@ -4,27 +4,30 @@ This is an API for Bangazon INC. This API will allow user to GET/POST/PUT and (s
 
 ## Installing
 
-As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running. 
- 1.     Fork and clone the repo on to you local machine. 
- 2. Run `dotnet ef migrations add bangazonapi` 
+As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running.
+ 1. Fork and clone the repo on to you local machine. 
+ 2. Run `dotnet restore`
+ 3. Run `dotnet ef migrations add bangazonapi` 
  >This will create all the migrations needed for Entity Framework to post items to the database based on the models in the Models/ directory
  3. Run `dotnet ef database update` 
  4. Run `dotnet run` 
  > This will compile and run everything as well as initalizing the database with some data to get started
 
 ## Using the API
-For now, all calls to the API will be made from `http:localhost:5000` as the domain. All calls will be made from here. 
->EX you can get a list of all the customers by making a get call to `http:localhost:5000/customer`
+For now, all calls to the API will be made from `http://localhost:5000` as the domain. All calls will be made from here. 
+>EX you can get a list of all the customers by making a get call to `http://localhost:5000/customer`
 
 ### Customers
 
 * You can access a list of all customers by running a Get call to `http://localhost:5000/customer`
 * You can get the information on a single customer by runnning a Get call to `http://localhost:5000/customer/{customerID}`
 >Note you need to have a customers unique ID number to get the correct information
-
 * You can update the info on a specific customer by running a Put call to `http://localhost:5000/customer/{customerID}`
-
-
+    * You must Put the entire changed object, which will include the `customerID`, `firstName`, `lastName`, `dateCreated`, `dateLastInteraction`, and `isActive`. 
+    * Example: `{"customerID": 1, "firstName": "Svetlana", "lastName": "Smith", "dateCreated": "2017-07-27T00:00:00", "dateLastInteraction": "2017-07-27T00:00:00", "isActive": 1}`
+* You can post a new customer but running a Post call to `http://localhost:5000/customer`.
+    * The post must have a FirstName and a LastName sent in.
+    * Example: `{ "FirstName": "Harry", "LastName": "Potter" }`
 
 ### Products
 
@@ -33,6 +36,8 @@ For now, all calls to the API will be made from `http:localhost:5000` as the dom
 >Note you need to have a products unique ID number to get the correct information
 
 * You can update the info on a specific product by running a Put call to `http://localhost:5000/product/{productID}`
+    * The Put must send in the complete object which will include a `productID`, `title`, `description`, `price`, `productTypeID`, `customerID`.
+    * Example: `{"productID": 1, "title": "Taco", "description": "Delisious beef tacos in a hard corn tortia shell", "price": 0.99, "productTypeID": 1, "customerID": 1}`
 
 * You can delete a product by running a Delete call to `http://localhost:5000/product{productID}`
 
