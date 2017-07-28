@@ -153,5 +153,5 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 >Note - you can only delete a training program if the current date is before the start date of a program. You cannot delete programs that have already happened. 
 
 * POST You can enter a new payment type by running a Post call to `http://localhost:5000/trainingProgram`
-    * You must put a `dateStart`, `dateEnd`, and `maxAttendees` with a Post.
-    * Example: `{ "dateStart": "02-14-2018", "dateEnd": "10-15-2018", "maxAttendees": 50 }`
+    * You must put a `name`, `dateStart`, `dateEnd`, and `maxAttendees` with a Post.
+    * Example: `{ "name": "Learning Vim", "dateStart": "02-14-2018", "dateEnd": "10-15-2018", "maxAttendees": 50 }`
