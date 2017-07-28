@@ -173,20 +173,24 @@ namespace BangazonAPI.Data
                 context.SaveChanges();
                 var trainingPrograms = new TrainingProgram[]
                 {
-                    new TrainingProgram { 
+                    new TrainingProgram {
+                        Name = "The correct pronunciation of Gif",
                         DateStart = new DateTime(2017, 07, 28),
                         DateEnd = new DateTime(2017, 08, 04),
                         MaxAttendees = 50
                     },
-                    new TrainingProgram { 
+                    new TrainingProgram {
+                        Name = "How to make a durn pot of coffee",
                         DateStart = new DateTime(2017, 01, 25),
                         DateEnd = new DateTime(2017, 02, 05),
                         MaxAttendees = 400
                     },
-                    new TrainingProgram { 
+                    new TrainingProgram {
+                        Name = "Fantastical Beasts and Where to Find Them",
                         DateStart = new DateTime(2017, 04, 03),
                         DateEnd = new DateTime(2017, 09,28),
-                        MaxAttendees = 200
+                        MaxAttendees = 150
+
                     }
                 };
                 foreach (TrainingProgram tp in trainingPrograms)

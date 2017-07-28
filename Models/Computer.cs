@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 //Written By: MEA 
 namespace BangazonAPI.Models
 {
-    //Creates a new Computer class
-    //ComputerID is the Primary Key
+    // Contains information about the computers used at Banagazon
+    // Includes the DatePurchased and the DateDecomissioned
+    // ComputerID is the Primary Key
     public class Computer
     {
         [Key]

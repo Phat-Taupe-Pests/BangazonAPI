@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
-//Written By: Andrew Rock. 
+//Written By: Andrew Rock 
 namespace BangazonAPI.Models
 {
-    //Creates a new Department class
-    //CustomerID is the Primary Key
+    // Contains information abou the departments in Bangazon
+    // Includes Name, ExpenseBudget, and a collection of Employees who work in that department
+    // CustomerID is the Primary Key
 
     public class Department
     {

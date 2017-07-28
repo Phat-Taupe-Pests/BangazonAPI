@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BangazonAPI.Models
 {
+    // Contains product information, including title, description, price, productType (FK ID), customer (FK ID),
+    // and a collection of productOrders, a join table representing orders to which this product has been added.
     public class Product
     {
         [Key]
