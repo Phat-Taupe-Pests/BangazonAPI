@@ -157,13 +157,13 @@ namespace BangazonAPI.Data
                 var computers = new Computer[]
                 {
                     new Computer { 
-                        DatePurchased = new DateTime(),
+                        DatePurchased = new DateTime(1987, 03, 28),
                     },
                     new Computer { 
-                        DatePurchased = new DateTime(),
+                        DatePurchased = new DateTime(1999, 12, 31),
                     },
                     new Computer { 
-                        DatePurchased = new DateTime(),
+                        DatePurchased = new DateTime(2015, 6, 6),
                     }
                 };
                 foreach (Computer comp in computers)
@@ -174,18 +174,18 @@ namespace BangazonAPI.Data
                 var trainingPrograms = new TrainingProgram[]
                 {
                     new TrainingProgram { 
-                        DateStart = new DateTime(),
-                        DateEnd = new DateTime(),
+                        DateStart = new DateTime(2017, 07, 28),
+                        DateEnd = new DateTime(2017, 08, 04),
                         MaxAttendees = 50
                     },
                     new TrainingProgram { 
-                        DateStart = new DateTime(),
-                        DateEnd = new DateTime(),
+                        DateStart = new DateTime(2017, 01, 25),
+                        DateEnd = new DateTime(2017, 02, 05),
                         MaxAttendees = 400
                     },
                     new TrainingProgram { 
-                        DateStart = new DateTime(),
-                        DateEnd = new DateTime(),
+                        DateStart = new DateTime(2017, 04, 03),
+                        DateEnd = new DateTime(2017, 09,28),
                         MaxAttendees = 200
                     }
                 };
@@ -221,6 +221,27 @@ namespace BangazonAPI.Data
                 foreach (Employee emp in employees)
                 {
                     context.Employee.Add(emp);
+                }
+                context.SaveChanges();
+
+                var ordersWithProducts = new ProductOrder[]
+                {
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 2
+                    },
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 1
+                    },
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 1
+                    }
+                };
+                foreach (ProductOrder product in ordersWithProducts)
+                {
+                    context.ProductOrder.Add(product);
                 }
                 context.SaveChanges();
 
