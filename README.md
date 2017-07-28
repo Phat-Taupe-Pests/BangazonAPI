@@ -186,7 +186,7 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 
 * POST You can enter a new payment type by running a Post call to `http://localhost:5000/department`
     * You must put a `name` and `expenseBudget` with a Post.
-    * Example: `{ "name": "Transfiguration" "expenseBudget": 100 }`
+    * Example: `{ "name": "Transfiguration", "expenseBudget": 100 }`
 
 ### Computer
 
