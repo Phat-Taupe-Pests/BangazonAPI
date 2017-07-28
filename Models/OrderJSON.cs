@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations;
 //Written By Ben Greaves
 namespace BangazonAPI.Models
 {
-    // A Class to structure the JSON easily so that Orders can be displayed with their products
+    // A Class that structures orders as JSON
+    // Returns JSON in an easily readable format, with products attached to the order and their quantity
+    // Contains OrderID, CustomerID, PaymentTypeID, and an array of Products
     public class OrderJSON
     {
         public int OrderID {get; set;}

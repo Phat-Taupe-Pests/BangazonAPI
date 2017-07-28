@@ -3,10 +3,12 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-//Written by: Andrew Rock
+// Written by: Andrew Rock
 
 namespace BangazonAPI.Models
 {
+    // A join table to record which products are on which orders
+    // Contains Product (FK ID) and Order (FK ID)
     public class ProductOrder
     {
         [Key]

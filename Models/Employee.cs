@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 //Written By: Chaz Henricks
 namespace BangazonAPI.Models
 {
-    //Creates a new Employee class
-    //EmployeeID is the Primary Key
+    // Contains information on employees of Bangazon
+    // Includes Name, JobTitle, DateStarted, Department (FK ID),  and IsSupervisor (are they head of their department? bool set to 0 by default)
+    // EmployeeID is the Primary Key
 
     public class Employee
     {
@@ -33,9 +33,5 @@ namespace BangazonAPI.Models
         {
             IsSupervisor = 0;
         }
-
-
-
-
     }
 }
