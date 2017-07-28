@@ -224,6 +224,27 @@ namespace BangazonAPI.Data
                 }
                 context.SaveChanges();
 
+                var ordersWithProducts = new ProductOrder[]
+                {
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 2
+                    },
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 1
+                    },
+                    new ProductOrder {
+                        OrderID = 1 ,
+                        ProductID = 1
+                    }
+                };
+                foreach (ProductOrder product in ordersWithProducts)
+                {
+                    context.ProductOrder.Add(product);
+                }
+                context.SaveChanges();
+
             }
        }
     }
