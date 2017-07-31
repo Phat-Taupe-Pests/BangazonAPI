@@ -30,19 +30,56 @@ namespace BangazonAPI.Controllers
         [HttpGet]
 
         //Get() is a mathod from the AspNetCore Controller class to retreive info from database. 
-        public IActionResult Get()
+        public IActionResult Get(bool? active)
         {
-            //Sets a new IQuerable Collection of <objects> that will be filled with each instance of _context.Customer
-            IQueryable<object> customers = from customer in _context.Customer select customer;
-
-            //if the collection is empty will retur NotFound and exit the method. 
-            if (customers == null)
+            //Check for the active search query
+            if(active is bool)
             {
-                return NotFound();
-            }
+                if(active == true)
+                {   
+                    //Gets Customers that have placed an order
+                    IQueryable<object> customers = from customer in _context.Customer
+                                                where _context.Order.Any(order=>(order.CustomerID == customer.CustomerID))  
+                                            select customer;
+                    if (customers==null)
+                    {
+                        return NotFound();
+                    }
+                    return Ok(customers);
+                }
+                else if (active == false)
+                {
+                    //Gets Customer that have NOT placed an order
+                    IQueryable<object> customers = from customer in _context.Customer
+                                                where !_context.Order.Any(order=>(order.CustomerID == customer.CustomerID))  
+                                            select customer;
+                    if (customers == null)
+                    {
+                        return NotFound();
+                    }
 
-            //otherwise return list of the customers
-            return Ok(customers);
+                    return Ok(customers);
+                }
+            }
+            if (active == null)
+            {
+                //Sets a new IQuerable Collection of <objects> that will be filled with each instance of _context.Customer
+                IQueryable<object> customers = from customer in _context.Customer select customer;
+
+                //if the collection is empty will retur NotFound and exit the method. 
+                if (customers == null)
+                {
+                    return NotFound();
+                }
+
+                //otherwise return list of the customers
+                return Ok(customers);
+                
+            }
+            else
+            {
+                return BadRequest();
+            }
 
         }
 
@@ -163,16 +200,39 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-
-        Uri uri = new Uri("http://localhost:5000/");
         
 
-        [HttpGet]
-        public IActionResult Get([FromUri] Customer status)
-        {
-            int boolValue = 0;
+        // [HttpGet]
+        // public IActionResult Index([FromQuery]bool active)
+        // {
+        //     int boolValue;
+        //     if(active)
+        //     {
+        //         boolValue = 1;
+        //     }
+        //     else if (!active)
+        //     {
+        //         boolValue =0;
+        //     }
+        //     else
+        //     {
+        //         return BadRequest();
+        //     }
+        //     try
+        //     {
+               
+        //         // if(customers.Count() == 0)
+        //         // {
+        //         //     return NotFound();
+        //         // }
 
+        //         return Ok("This is a valid route");
 
-        }
+        //     }
+        //     catch(System.InvalidOperationException ex)
+        //     {
+        //         return NotFound(ex);
+        //     }
+        //}
     }
 }
