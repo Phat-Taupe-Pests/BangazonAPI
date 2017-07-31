@@ -24,6 +24,6 @@ namespace BangazonAPI.Models
         public int CustomerID { get; set; }
         public Customer Customer { get; set; }
 
-        ICollection<Order> Orders;
+        public ICollection<Order> Orders;
     }
 }
