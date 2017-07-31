@@ -82,7 +82,7 @@ Write ‘:wq’ to exit vim
 ### Customers
 
 * GET You can access a list of all customers by running a Get call to `http://localhost:5000/customer`
-* GET one. You can get the information on a single customer by runnning a Get call to http://localhost:5000/customer/{customerID}. This method will return the customer with nested completed orders under the "Orders" property
+* GET one. You can get the information on a single customer by running a Get call to http://localhost:5000/customer/{customerID}. This method will return the customer with nested completed orders under the "Orders" property
 >Note you need to have a customers unique ID number to get the correct information
 * GET all customers that have created an order by running Get `http://localhost:5000/customer/?active=true`
 * GET all customers that have NOT created an order by running Get `http://localhost:5000/customer/?active=false` 
