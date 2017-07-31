@@ -69,6 +69,8 @@ As of now, the database is going to be hosted on your local computer. There are 
 ## Using the API
 For now, all calls to the API will be made from `http://localhost:5000` as the domain. All calls will be made from here. 
 >EX you can get a list of all the customers by making a get call to `http://localhost:5000/customer`
+There is a CORS policy. Only requests from `http://www.bangazon.com` will be accepted.
+Local request will still function.
 
 ### Customers
 
