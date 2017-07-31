@@ -34,11 +34,11 @@ namespace BangazonAPI
             Console.WriteLine("ConfigureServices");
 
             // Add CORS framework
-            // services.AddCors(options =>
-            // {
-            //     options.AddPolicy("AllowWhiteListOrigins",
-            //         builder => builder.WithOrigins("http://example.com"));
-            // });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOnlyBangazonians",
+                    builder => builder.WithOrigins("http://www.bangazon.com"));
+            });
 
             // Add framework services.
             services.AddMvc()
@@ -55,7 +55,7 @@ namespace BangazonAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseCors("AllowWhiteListOrigins");
+            app.UseCors("AllowOnlyBangazonians");
 
             Console.WriteLine("Configure");
 
