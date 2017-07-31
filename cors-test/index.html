@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>testing cors</title>
+</head>
+<body>
+<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script>
+      $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:5000/customer" ,
+            success: function (data) {
+                console.log("CORS is not Working Request Succesfull");
+            },
+            error: function (data) {
+                console.log("CORS Working Request Failed")
+            }
+        });
+    </script>
+</body>
+</html>

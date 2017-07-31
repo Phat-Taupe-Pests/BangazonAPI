@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BangazonAPI.Data;
 using BangazonAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace BangazonAPI.Controllers
 {
     //Sets URL route to <websitename>/Employee
     [Route("[controller]")]
+    [EnableCors("AllowOnlyBangazonians")]
     //Creates a new Employee controller class that inherits methods from AspNetCore Controller class
     public class EmployeeController : Controller
     {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BangazonAPI.Data;
 using BangazonAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,8 @@ namespace BangazonAPI.Controllers
 {
     // Class to PUT/POST/GET/DELETE payment type to the Bangazon API.
     [Route("[controller]")]
+    [EnableCors("AllowOnlyBangazonians")]
+
     public class PaymentTypeController : Controller
     {
         //Sets up an empty variable _context that will  be a reference of our BangazonAPIContext class
