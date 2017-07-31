@@ -47,31 +47,47 @@ namespace BangazonAPI.Controllers
         }
 
         // GET Single Customer
-         //http://localhost:5000/Customer/{id} will return info on a single customer based on ID 
+        // http://localhost:5000/Customer/{id} will return info on a single customer based on ID, with theor products nested in the JSON
         [HttpGet("{id}", Name = "GetSingleCustomer")]
 
-        //will run Get based on the id from the url route. 
+        // Will run Get based on the id from the url route. 
         public IActionResult Get([FromRoute] int id)
         {
-            //if you request anything other than an Id you will get a return of BadRequest. 
+            // If you request anything other than an Id you will get a return of BadRequest. 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
             try
             {
-                //will search the _context.Customer for an entry that has the id we are looking for
-                //if found, will return that customer
-                //if not found will return 404. 
+                // Builds a custom JSON object for improved readability
                 Customer customer = _context.Customer.Single(m => m.CustomerID == id);
-
+                var completedOrders = from o in _context.Order
+                                      where o.PaymentTypeID != null
+                                      && o.CustomerID == id
+                                      select o;
+                CustomerWithOrderJSON custJSON = new CustomerWithOrderJSON()
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    CustomerID = customer.CustomerID
+                };
+                List <OrderOnCustomerJSON> completedOrdersJSON = new List <OrderOnCustomerJSON>();
+                foreach (Order order in completedOrders) {
+                    OrderOnCustomerJSON newOrder = new OrderOnCustomerJSON(){
+                        OrderID = order.OrderID,
+                        CustomerID = order.CustomerID,
+                        PaymentTypeID = order.PaymentTypeID,
+                        DateCreated = order.DateCreated
+                    };
+                    completedOrdersJSON.Add(newOrder);
+                }
+                custJSON.Orders = completedOrdersJSON;
                 if (customer == null)
                 {
                     return NotFound();
                 }
-                
-                return Ok(customer);
+                return Ok(custJSON);
             }
             //if the try statement fails for some reason, will return error of what happened. 
             catch (System.InvalidOperationException ex)

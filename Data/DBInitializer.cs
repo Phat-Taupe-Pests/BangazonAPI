@@ -76,6 +76,11 @@ namespace BangazonAPI.Data
                         CustomerID = customers.Single(s => s.FirstName == "Svetlana").CustomerID
                     },
                     new PaymentType{
+                        AccountNumber = 123400889,
+                        Name = "Check",
+                        CustomerID = customers.Single(s => s.FirstName == "Svetlana").CustomerID
+                    },
+                    new PaymentType{
                         AccountNumber = 555555555,
                         Name = "MasterCard",
                         CustomerID = customers.Single(c => c.FirstName == "Sequina").CustomerID
@@ -131,12 +136,23 @@ namespace BangazonAPI.Data
                 var orders = new Order[]
                 {
                     new Order{
+                        CustomerID = customers.Single(c => c.FirstName == "Svetlana").CustomerID,
+                        PaymentTypeID = paymentTypes.Single(s => s.Name == "Visa").PaymentTypeID
+                    },
+                    new Order{
+                        CustomerID = customers.Single(c => c.FirstName == "Svetlana").CustomerID,
+                        PaymentTypeID = paymentTypes.Single(s => s.Name == "Check").PaymentTypeID
+                    },
+                    new Order{
+                        CustomerID = customers.Single(c => c.FirstName == "Svetlana").CustomerID
+                    },
+                    new Order{
                         CustomerID = customers.Single(c => c.FirstName == "Sequina").CustomerID
-                        
                     },
                     new Order{
                         CustomerID = customers.Single(c => c.FirstName == "Sequina").CustomerID
                     }
+
                 };
                 // Adds each new order into the context
                 foreach(Order p in orders)

@@ -53,12 +53,11 @@ namespace BangazonAPI.Controllers
             {
                 Order order = _context.Order.Include("ProductOrders.Product").Single(m => m.OrderID == id);
                 List <Product> theseProducts = new List <Product>();
-
                 foreach (ProductOrder productOrder in order.ProductOrders)
                 {
                     theseProducts.Add(productOrder.Product);
                 }
-                List <ProductJSON> jSONProducts = new List <ProductJSON>();
+                List <ProductOnOrderJSON> jSONProducts = new List <ProductOnOrderJSON>();
                 foreach (Product product in theseProducts) {
                     int index = jSONProducts.FindIndex(x => x.ProductID == product.ProductID);
                     if (index != -1) 
@@ -67,7 +66,7 @@ namespace BangazonAPI.Controllers
                     } 
                     else 
                     {
-                        ProductJSON newProduct = new ProductJSON()
+                        ProductOnOrderJSON newProduct = new ProductOnOrderJSON()
                         {
                             ProductID = product.ProductID,
                             Name = product.Title,
@@ -77,7 +76,7 @@ namespace BangazonAPI.Controllers
                         jSONProducts.Add(newProduct);
                     }
                 }
-                OrderJSON orderWithProducts = new OrderJSON()
+                OrderWithProductJSON orderWithProducts = new OrderWithProductJSON()
                 {
                     OrderID = order.OrderID,
                     CustomerID = order.CustomerID,
