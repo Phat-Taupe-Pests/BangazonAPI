@@ -69,6 +69,15 @@ As of now, the database is going to be hosted on your local computer. There are 
 ## Using the API
 For now, all calls to the API will be made from `http://localhost:5000` as the domain. All calls will be made from here. 
 >EX you can get a list of all the customers by making a get call to `http://localhost:5000/customer`
+CORS is enabled with `http://www.bangazon.com`
+To set your local host to `http://www.bangazon.com`
+For Windows: Open `C:\Windows\System32\drivers\etc\hosts` as the Administrator Add 	`127.0.0.1:8080       www.bangazon.com` to the bottom of the document.
+For Mac: in the console run 
+`sudo vim /etc/host`
+Hit ‘i’ to enter Insert Mode, then put this at the bottom:
+127.0.0.1:8080       www.bangazon.com
+Press ‘esc’ to exit insert mode.
+Write ‘:wq’ to exit vim
 
 ### Customers
 
