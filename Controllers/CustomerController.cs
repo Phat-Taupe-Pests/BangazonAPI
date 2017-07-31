@@ -200,39 +200,6 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        
-
-        // [HttpGet]
-        // public IActionResult Index([FromQuery]bool active)
-        // {
-        //     int boolValue;
-        //     if(active)
-        //     {
-        //         boolValue = 1;
-        //     }
-        //     else if (!active)
-        //     {
-        //         boolValue =0;
-        //     }
-        //     else
-        //     {
-        //         return BadRequest();
-        //     }
-        //     try
-        //     {
-               
-        //         // if(customers.Count() == 0)
-        //         // {
-        //         //     return NotFound();
-        //         // }
-
-        //         return Ok("This is a valid route");
-
-        //     }
-        //     catch(System.InvalidOperationException ex)
-        //     {
-        //         return NotFound(ex);
-        //     }
-        //}
+       
     }
 }

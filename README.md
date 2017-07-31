@@ -33,13 +33,12 @@ https://www.microsoft.com/net/core#windows
   1. Click the link to download the .NET Core SDK for Windows (https://go.microsoft.com/fwlink/?LinkID=827524)
   2. Once installed open a command line app to intialize some code.
   3. Make a directory for your app: mkdir HelloWorld
-  4. Move to the newly created directory. : cd 
-  HelloWorld
+  4. Move to the newly created directory. : cd HelloWorld
   5. Create a new app: dotnet new
-  5. Build the app and restore any get any missing libraries (packages) : dotnet restore
-  6. Run the app: dotnet run
-  7. You should see the test "Hello World".
-  8. Navigate to the folder where the app was created and https://docs.asp.net/en/latest/getting-started.html
+  6. Build the app and restore any get any missing libraries (packages) : dotnet restore
+  7. Run the app: dotnet run
+  8. You should see the test "Hello World".
+  9. Navigate to the folder where the app was created and https://docs.asp.net/en/latest/getting-started.html
 
 ## OSX
 
@@ -74,8 +73,10 @@ For now, all calls to the API will be made from `http://localhost:5000` as the d
 ### Customers
 
 * GET You can access a list of all customers by running a Get call to `http://localhost:5000/customer`
-* GET one. You can get the information on a single customer by runnning a Get call to `http://localhost:5000/customer/{customerID}`
+* GET one. You can get the information on a single customer by runnning a Get call to http://localhost:5000/customer/{customerID}. This method will return the customer with nested completed orders under the "Orders" property
 >Note you need to have a customers unique ID number to get the correct information
+* GET all customers that have created an order by running Get `http://localhost:5000/customer/?active=true`
+* GET all customers that have NOT created an order by running Get `http://localhost:5000/customer/?active=false` 
 * PUT You can update the info on a specific customer by running a Put call to `http://localhost:5000/customer/{customerID}`
     * You must Put the entire changed object, which will include the `customerID`, `firstName`, `lastName`, `dateCreated`, `dateLastInteraction`, and `isActive`. 
     * Example: `{"customerID": 1, "firstName": "Svetlana", "lastName": "Smith", "dateCreated": "2017-07-27T00:00:00", "dateLastInteraction": "2017-07-27T00:00:00", "isActive": 1}`
